@@ -1,0 +1,18 @@
+{% extends 'shared/base.html' %} 
+
+{%load static%} 
+
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static 'style/style.css' %}" />
+{% endblock css_file %} {% block content %}
+
+<ul>
+  {% for post in posts%}
+  <li>
+    <a href="{% url 'post_details' post.title %}">{{ post.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock content %}
