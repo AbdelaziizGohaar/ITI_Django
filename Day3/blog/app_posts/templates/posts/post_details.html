@@ -1,0 +1,31 @@
+
+{% extends 'shared/base.html' %} 
+
+{%load static%} 
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static 'style/style.css' %}" />
+{% endblock css_file %} 
+
+{% block content %}
+
+<h1>{{ post.title }}</h1>
+<p>Posted on: {{ post.date_posted }}</p>
+<p>Author: <a href="{% url 'author_profile' post.author.pk %}">{{ post.author }}</a></p>
+
+{% if post.image_url %}
+  <img src="{{ post.image_url }}" width="300">
+{% endif %}
+
+<p>{{ post.content }}</p>
+
+<h3>Comments:</h3>
+{% for comment in post.comments.all %}
+  <p>{{ comment.content }} – <em>{{ comment.posted_by }}</em></p>
+{% empty %}
+  <p>No comments yet.</p>
+{% endfor %}
+
+
+
+{% endblock content %}

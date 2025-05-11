@@ -34,7 +34,7 @@ def all_posts(request):
 
 #=========== home Methods ===============
 def home(request):
-    posts = Post.objects.all().order_by('-date_posted')  # Newest first
+    posts = Post.objects.all().order_by('-date_posted')  # araga3 el Newest awel
     return render(request, 'posts/home.html', {'posts': posts})
 
 
